@@ -89,3 +89,13 @@ running this example shows the effect:
 try to make this run with the build tool: `sbt`.
 
 https://github.com/datastax/spark-cassandra-connector/blob/master/spark-cassandra-connector-demos/simple-demos/src/main/scala/com/datastax/spark/connector/demo/DemoApp.scala
+
+this gave the error that something with akka is wrong:
+https://groups.google.com/a/lists.datastax.com/forum/#!topic/spark-connector-user/UqCYeUpgGCU
+
+its maybe something about versioning.
+other errors came in the workers logs:
+
+org.apache.spark.deploy.Command; local class incompatible: stream classdesc serialVersionUID = -7098307370860582211, local class serialVersionUID = -333531271946754762
+
+next test would be to use scala 2.10 and not scala 2.11
