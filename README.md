@@ -47,13 +47,13 @@ I build spark from source there.
 
 Followed the steps from http://pulasthisupun.blogspot.de/2013/11/how-to-set-up-apache-spark-cluster-in.html which were:
 
-added config to config/spark-env.sh
+added config to `conf/spark-env.sh`
 
     export SPARK_WORKER_MEMORY=2g
     export SPARK_WORKER_INSTANCES=2
     export SPARK_WORKER_DIR=/Users/nils4tdd/dev/spark_worker_dir
 
-added config to config/spark-default.sh
+added config to `conf/spark-defaults.sh`
 
     # Default system properties included when running spark-submit.
     # This is useful for setting default environmental settings.
