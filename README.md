@@ -64,7 +64,7 @@ added config to config/spark-default.sh
 
 start the cluster
 
-    sbin/spark-master.sh
+    sbin/start-master.sh
     ./bin/spark-class org.apache.spark.deploy.worker.Worker spark://127.0.0.1:7077
     ./bin/spark-class org.apache.spark.deploy.worker.Worker spark://127.0.0.1:7077
     ./bin/spark-class org.apache.spark.deploy.worker.Worker spark://127.0.0.1:7077
@@ -75,6 +75,24 @@ this can be checked on http://localhost:8080 if its working
 now the shell can be started:
 
     MASTER=spark://127.0.0.1:7077 bin/spark-shell
+
+or:
+
+    git clone https://github.com/datastax/spark-cassandra-connector.git
+    cd spark-cassandra-connector
+    sbt/sbt assembly
+    ~/Downloads/spark-1.2.1/bin/spark-shell \ 
+        --jars ~/spark-cassandra-connector/spark-cassandra-connector/target/scala-2.10/connector-assembly-1.2.0-SNAPSHOT.jar 
+
+in the shell:
+
+    sc.stop
+    import com.datastax.spark.connector._
+    import org.apache.spark.SparkContext
+    import org.apache.spark.SparkContext._
+    import org.apache.spark.SparkConf
+    val conf = new SparkConf(true).set("spark.cassandra.connection.host", "127.0.0.1")
+    val sc = new SparkContext("spark://127.0.0.1:7077", "test", conf)
 
 running this example shows the effect:
 
